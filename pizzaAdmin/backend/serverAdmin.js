@@ -69,8 +69,36 @@ app.delete('/admin', (req, res) => {
             return res.status(500).send(err)
         }
     }); */
-    res.status(200)
+    res.send("ok megint")
 });
+
+app.post("/admin",(req,res)=>{
+
+    const dataBase = getDatabase();
+    const newId=dataBase[dataBase.length-1].id+1
+    const newUploadedData = req.body;
+    // a database price ára, string és tegyük át számmá. !!!!
+    Number(newUploadedData.price);
+ 
+    newUploadedData.id =newId;
+    newUploadedData.amount = 0;
+    newUploadedData.image = `../images/pizza${newId}.jpg`;
+    dataBase.push(newUploadedData)
+    saveChangedData(dataBase)
+ // Image upload eleje :
+    const picturePath =`${__dirname}/../../pizzaDatabase/images/pizza${newId}.jpg`
+    if(req.files){
+        const uploadedImage = req.files.image;
+        uploadedImage.mv(picturePath, (err) => {
+			if (err) {
+				console.log(err);
+				return res.status(500).send(err);
+			}
+		});
+    }
+// Image upload vege!
+    res.send()
+})
 
 app.listen(port,()=>{
     console.log(`the server is runing on ${port}`)
