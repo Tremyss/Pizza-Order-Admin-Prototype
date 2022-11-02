@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+/* szürke 1 : #525050
+szürke 2 :#3e3c3d
+szürke 3 :#333333
+szürke 4 :#1c1a1b
+foodbar felirat (hússzín) :#ce5051
+pirosas pink: #e90f31
+kicsit pinkebb pink:#f01d42 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Comic Neue', cursive;
+    background-color: #403e3e;
+    color: white;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    color: #ce5051;
+}
+#carouselExampleControls{
+    height: 40rem;
+    margin-bottom: 5rem;
+}
+.carousel-item{
+    position: relative;
+}
+#hero-title{
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    font-size: 10rem;
+}
+#slogen{
+    position: absolute;
+    font-size: 7rem;
+    color: white;
+    top: 10%;
+    left: 20%;
+}
+#slogen2{
+    position: absolute;
+    font-size: 7rem;
+    color: white;
+    top: 10%;
+    left: 15%;
+}
+.carousel-inner{
+    height: 40rem;
+}
+.main {
+    display: flex;
+    margin-bottom: 3rem;
+}
+
+#pizzas {
+    /* background-color: aquamarine; */
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.pizza-card {
+    width: 30rem;
+    height: 45rem;
+    background-color: #1c1a1b;
+    padding: 1rem;
+}
+
+.pizza-card img {
+    width: 100%;
+    margin: 0 0 2rem 0;
+}
+
+.pizza-content {
+    display: flex;
+    flex-direction: column;
+    line-height: 2rem;
+    min-height: 50%;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.pizza-content input {
+    display: block;
+    width: 5rem;
+    height: 4rem;
+    margin: 1rem auto;
+    border-radius: 50%;
+    text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+}
+
+.pizza-content button {
+    background-color: #e90f31;
+    border: none;
+    padding: .8rem;
+    color: white;
+}
+
+/* ! ORDER SECTION */
+
+#order-div {
+    margin: 0 1.5rem;
+    width: 25%;
+    display: flex;
+    /* set by script.js */    
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    font-size: 1.8rem;
+}
+
+/* ! BASKET SECTION */
+
+#basket {
+    background-color: #525050;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#order-title {
+    background-color: #ce5051;
+    font-weight: 600; 
+    padding: 0.5rem;
+    font-size: 2.5rem;
+    
+}
+
+#cart-list {
+    
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin: 0.7rem 0;
+}
+
+.cart-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;    
+}
+.pizza-amount{
+    width: 10%;
+}
+.pizza-name{
+    width: 50%;
+    text-align: left;
+}
+
+#cart-sum {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;  
+    border-top: 0.1rem solid white;
+    padding: 0.5rem;
+    font-size: 2.5rem;   
+}
+
+/* ? END OF BASKET SECTION */
+
+/* ! FILL OUT FORM */
+
+#form {
+    background-color: #686666;
+    width: 100%;
+    padding: 1.5rem;
+    margin: 0;
+    display: none;
+    flex-direction: column;
+    gap: 1.8rem;
+
+}
+
+#user-instructions {
+    font-weight: 600;
+}
+
+.order-confirm{
+    font-size: 2.3rem;
+    /* text-decoration: underline; */
+    border-bottom: 0.2rem solid white;
+
+
+}
+
+#form input {
+    padding: 0.5rem 0.3rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.763);
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(255, 255, 255, 0.763);
+    opacity: 1; /* Firefox */
+    font-size: 1.6rem;
+
+  }
+#submitBtn {
+    background-color: #e90f31;
+    border: none;
+    padding: .8rem;
+    color: white;
+    font-size: 2rem;
+}
+
+/* ? FILL OUT FORM */
+/* ? END OF ORDER SECTION */
