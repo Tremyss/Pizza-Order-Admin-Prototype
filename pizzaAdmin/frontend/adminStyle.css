@@ -36,3 +36,10 @@ body {
         'opsz' 48
 }
 
+#menuHeader{
+    display: flex;
+}
+
+#exampleModal{
+    color:black;
+}

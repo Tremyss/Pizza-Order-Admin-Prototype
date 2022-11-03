@@ -69,7 +69,7 @@ app.delete('/admin', (req, res) => {
             return res.status(500).send(err)
         }
     }); */
-    res.send("ok megint")
+    res.json(200)
 });
 
 app.post("/admin",(req,res)=>{

@@ -1,58 +1,58 @@
 [
-    {
-        "id": 1,
-        "name": "Hawaii pizza",
-        "ingredients": "pizzaparadicsom, mozzarella, kukorica, sonka, ananász",
-        "image": "../images/pizza1.jpg",
-        "amount": 0,
-        "price": 3090
-    },
-    {
-        "id": 2,
-        "name": "Margherita pizza",
-        "ingredients": "pizzaparadicsom, dupla mozzarella, bazsalikom",
-        "image": "../images/pizza2.jpg",
-        "amount": 0,
-        "price": 2890
-    },
-    {
-        "id": 3,
-        "name": "Chicken carbonara pizza",
-        "ingredients": "besamel, fokhagyma, sonka, bacon, lilahagyma, roston csirke, parmezán, mozzarella, újhagyma",
-        "image": "../images/pizza3.jpg",
-        "amount": 0,
-        "price": 3890
-    },
-    {
-        "id": 4,
-        "name": "Aphrodité pizza",
-        "ingredients": "tejföl, roston csirke, koktélparadicsom, feta sajt, olívabogyó, bazsalikom, mozzarella",
-        "image": "../images/pizza4.jpg",
-        "amount": 0,
-        "price": 3090
-    },
-    {
-        "id": 5,
-        "name": "Rangers pizza",
-        "ingredients": "BBQ, sajtkrém, roston csirke, császárszalonna, paradicsomkarika, mozzarella",
-        "image": "../images/pizza5.jpg",
-        "amount": 0,
-        "price": 3090
-    },
-    {
-        "id": 6,
-        "name": "Sonkás pizza",
-        "ingredients": "pizzaparadicsom, mozzarella, sonka",
-        "image": "../images/pizza6.jpg",
-        "amount": 0,
-        "price": 2990
-    },
-    {
-        "id": 7,
-        "name": "Mérges vagyok pizza",
-        "ingredients": "fokhagymás besamel, bacon, főtt-füstölt tarja, paprikás vastagkolbász, jalapeno, hegyes erős paprika, mozzarella",
-        "image": "../images/pizza7.jpg",
-        "amount": 0,
-        "price": 3590
-    }
+  {
+      "id": 1,
+      "name": "Hawaii pizza",
+      "ingredients": "pizzaparadicsom, mozzarella, kukorica, sonka, ananász",
+      "image": "../images/pizza1.jpg",
+      "amount": 0,
+      "price": 3090
+  },
+  {
+      "id": 2,
+      "name": "Margherita pizza",
+      "ingredients": "pizzaparadicsom, dupla mozzarella, bazsalikom",
+      "image": "../images/pizza2.jpg",
+      "amount": 0,
+      "price": 2890
+  },
+  {
+      "id": 3,
+      "name": "Chicken carbonara pizza",
+      "ingredients": "besamel, fokhagyma, sonka, bacon, lilahagyma, roston csirke, parmezán, mozzarella, újhagyma",
+      "image": "../images/pizza3.jpg",
+      "amount": 0,
+      "price": 3890
+  },
+  {
+      "id": 4,
+      "name": "Aphrodité pizza",
+      "ingredients": "tejföl, roston csirke, koktélparadicsom, feta sajt, olívabogyó, bazsalikom, mozzarella",
+      "image": "../images/pizza4.jpg",
+      "amount": 0,
+      "price": 3090
+  },
+  {
+      "id": 5,
+      "name": "Rangers pizza",
+      "ingredients": "BBQ, sajtkrém, roston csirke, császárszalonna, paradicsomkarika, mozzarella",
+      "image": "../images/pizza5.jpg",
+      "amount": 0,
+      "price": 3090
+  },
+  {
+      "id": 6,
+      "name": "Sonkás pizza",
+      "ingredients": "pizzaparadicsom, mozzarella, sonka",
+      "image": "../images/pizza6.jpg",
+      "amount": 0,
+      "price": 2990
+  },
+  {
+      "id": 7,
+      "name": "Mérges vagyok pizza",
+      "ingredients": "fokhagymás besamel, bacon, főtt-füstölt tarja, paprikás vastagkolbász, jalapeno, hegyes erős paprika, mozzarella",
+      "image": "../images/pizza7.jpg",
+      "amount": 0,
+      "price": 3590
+  }
 ]
