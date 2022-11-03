@@ -94,9 +94,7 @@ const deletePizza = (data) => async (event) => {
       },
       body: JSON.stringify(deletedData),
     });
-  }
-
-  
+  }  
   getData();
 };
 
@@ -114,7 +112,13 @@ const modifyData = async (event) => {
 
     event.preventDefault()
     const formData = new FormData(modalForm)
-
+    /* let idNumber = modalInputId.innerText
+    console.log(typeof idNumber)
+    let numberifiedIdNumber = parseInt(idNumber)
+    console.log(typeof numberifiedIdNumber)
+    formData.append("id", numberifiedIdNumber) */
+    formData.append("id", modalInputId.innerText)
+    
     const url = "http://127.0.0.1:5050/admin";
     const response = await fetch(url, {
       method: "PUT",
@@ -122,7 +126,7 @@ const modifyData = async (event) => {
     });
 
     getData();
-    
+    console.log([...formData]);
   };
 
   modalForm.addEventListener("submit", modifyData)

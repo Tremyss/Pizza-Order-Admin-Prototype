@@ -5,7 +5,8 @@
         "ingredients": "pizzaparadicsom, mozzarella, kukorica, sonka, ananász",
         "image": "../images/pizza1.jpg",
         "amount": 0,
-        "price": 3090
+        "price": 3090,
+        "status": "active"
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "ingredients": "pizzaparadicsom, dupla mozzarella, bazsalikom",
         "image": "../images/pizza2.jpg",
         "amount": 0,
-        "price": 2890
+        "price": 2890,
+        "status": "active"
     },
     {
         "id": 3,
@@ -21,7 +23,8 @@
         "ingredients": "besamel, fokhagyma, sonka, bacon, lilahagyma, roston csirke, parmezán, mozzarella, újhagyma",
         "image": "../images/pizza3.jpg",
         "amount": 0,
-        "price": 3890
+        "price": 3890,
+        "status": "active"
     },
     {
         "id": 4,
@@ -29,7 +32,8 @@
         "ingredients": "tejföl, roston csirke, koktélparadicsom, feta sajt, olívabogyó, bazsalikom, mozzarella",
         "image": "../images/pizza4.jpg",
         "amount": 0,
-        "price": 3090
+        "price": 3090,
+        "status": "active"
     },
     {
         "id": 5,
@@ -37,7 +41,8 @@
         "ingredients": "BBQ, sajtkrém, roston csirke, császárszalonna, paradicsomkarika, mozzarella",
         "image": "../images/pizza5.jpg",
         "amount": 0,
-        "price": 3090
+        "price": 3090,
+        "status": "active"
     },
     {
         "id": 6,
@@ -45,7 +50,8 @@
         "ingredients": "pizzaparadicsom, mozzarella, sonka",
         "image": "../images/pizza6.jpg",
         "amount": 0,
-        "price": 2990
+        "price": 2990,
+        "status": "active"
     },
     {
         "id": 7,
@@ -53,6 +59,7 @@
         "ingredients": "fokhagymás besamel, bacon, főtt-füstölt tarja, paprikás vastagkolbász, jalapeno, hegyes erős paprika, mozzarella",
         "image": "../images/pizza7.jpg",
         "amount": 0,
-        "price": 3590
+        "price": 3590,
+        "status": "active"
     }
 ]

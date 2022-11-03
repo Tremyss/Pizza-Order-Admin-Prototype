@@ -16,6 +16,7 @@ const dataBaseFilePath = `${__dirname}/../../pizzaDatabase/pizzaDatabase.json`
 // ? kiolvassa és visszaadja a database objectet
 const getDatabase = () => {
     const pizzasJson = fs.readFileSync(dataBaseFilePath);
+    // todo img database beolvasása
     return JSON.parse(pizzasJson);    
 }
 
@@ -99,6 +100,43 @@ app.post("/admin",(req,res)=>{
 // Image upload vege!
     res.send()
 })
+
+// ! Edit request handler
+// ? A lemódosított adatot elmentjük az adatbázisba
+
+app.put('/admin', (req,res) => {
+    const currentDatabase = getDatabase();
+    
+    const modifiedItem = req.body
+
+    const newDatabase = []
+
+    for (const item of currentDatabase) {
+        if (item.id == modifiedItem.id) {   
+              
+            item.name = modifiedItem.name
+            item.ingredients = modifiedItem.ingredients
+            item.price = modifiedItem.price
+            item.status = modifiedItem.status
+        }
+        newDatabase.push(item)
+    }
+
+    saveChangedData(newDatabase);
+    res.sendStatus(200)
+    console.log(newDatabase);
+    
+    const picturePath =`${__dirname}/../../pizzaDatabase/images/pizza${req.body.id}.jpg`
+    if(req.files){
+        const uploadedImage = req.files.image;
+        uploadedImage.mv(picturePath, (err) => {
+			if (err) {
+				console.log(err);
+				return res.status(500).send(err);
+			}
+		});
+    }
+});
 
 app.listen(port,()=>{
     console.log(`the server is runing on ${port}`)
