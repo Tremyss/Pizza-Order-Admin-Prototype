@@ -14,7 +14,7 @@ app.get("/", (req, res)=> {
 
 app.get("/api", (req, res)=> {
     const pizzasJson = fs.readFileSync(`${__dirname}/../../pizzaDatabase/pizzaDatabase.json`)
-    const pizzasObj = JSON.parse(pizzasJson)c
+    const pizzasObj = JSON.parse(pizzasJson)
     res.json(pizzasObj)
 })
 

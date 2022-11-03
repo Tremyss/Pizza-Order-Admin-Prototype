@@ -9,7 +9,7 @@ app.use(cors())
 app.use(express.json())
 app.use(fileUpload())
 app.use(express.static(`${__dirname}/../frontend/`));
-app.use(express.static(`${__dirname}/../../pizzaDatabase/images/`));
+app.use(express.static(`${__dirname}/../../pizzaDatabase/`));
 
 const dataBaseFilePath = `${__dirname}/../../pizzaDatabase/pizzaDatabase.json`
 

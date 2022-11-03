@@ -1,0 +1,13 @@
+I.
+SZERVER OLDALI REQUEST HANDLEREK
+PIZZA DB megjelenítéshez és kezeléshez
+- serving: FRONTEND DIR, IMAGE DIR, database.json
+- GET database
+- DELETE (picture + entry from databse)
+- POST (save picture + push new entry into database)
+- PUT (replace existing file + update existing entry in database)
+II. 
+SZERVER OLDALI REQUEST HANDLEREK
+ORDERS DB megjelenítéshez és kezeléshez
+- GET (orders database (multiple files) + db with filter query param <<open / closed>>)
+- PUT (set status in existing order (single file))

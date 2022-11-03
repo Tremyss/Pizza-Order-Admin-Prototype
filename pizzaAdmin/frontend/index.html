@@ -1,38 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Google Material icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
     <link rel="stylesheet" href="adminStyle.css" />
-    <title>Mario's admin</title>
-  </head>
-  <body>
-    <h1>Mario</h1>
-    <form ref='uploadForm' 
-  id='uploadForm' 
-  action='http://localhost:5050/admin' 
-  method='post'
-  encType="multipart/form-data">
-      <div class="mb-3">
-        <label for="pizzaInputName" class="form-label">Name</label>
-        <input name="name" type="text" class="form-control" id="pizzaInputName" aria-describedby="nameHelp">  
+  <title>Mario's admin</title>
+</head>
+
+<body>
+
+  <h1>Mario</h1>
+  <form ref='uploadForm' id='uploadForm' action='http://localhost:5050/admin' method='post'
+    encType="multipart/form-data">
+    <div class="mb-3">
+      <label for="pizzaInputName" class="form-label">Name</label>
+      <input name="name" type="text" class="form-control" id="pizzaInputName" aria-describedby="nameHelp">
+    </div>
+    <div class="mb-3">
+      <label for="pizzaInputIngredients" class="form-label">Ingredients</label>
+      <input name="ingredients" type="text" class="form-control" id="pizzaInputIngredients"
+        aria-describedby="ingredientsHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Price</label>
+      <input name="price" type="number" class="form-control" id="pizzaInputPrice" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Upload File</label>
+      <input name="image" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <h2>Mario's pizzas</h2>
+
+  <div id="menu">
+
+    <div id="menuHead">
+      <div id="menuHeader">
+        <div class="pizzaId">ID</div>
+        <div class="pizzaName">Name</div>
+        <div class="pizzaIngredients">Ingredients</div>
+        <div class="pizzaPrice">Price (Ft)</div>
+        <button class="editButton">edit</button>
+        <button class="deleteButton">delete</button>
       </div>
-      <div class="mb-3">
-        <label for="pizzaInputIngredients" class="form-label">Ingredients</label>
-        <input name="ingredients" type="text" class="form-control" id="pizzaInputIngredients" aria-describedby="ingredientsHelp">
+    </div>
+
+    <div id="menuBody">
+      //rendered pizza list here
+      <div class="menuRow">
+        <div class="pizzaId"></div>
+        <img class="pizzaImage" src="" alt="">
+        <div class="pizzaName"></div>
+        <div class="pizzaIngredients"></div>
+        <div class="pizzaPrice"></div>
+        <button class="editButton">edit</button>
+        <button class="deleteButton">delete</button>
       </div>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Price</label>
-        <input name="price" type="number" class="form-control" id="pizzaInputPrice" aria-describedby="emailHelp">
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Upload File</label>
-        <input name="image" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </div>
+
+
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
