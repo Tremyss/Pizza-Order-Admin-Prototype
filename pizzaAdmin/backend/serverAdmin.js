@@ -4,6 +4,7 @@ const fs = require("fs");
 const fileUpload = require("express-fileupload");
 const port = 5050;
 const cors = require('cors');
+const path = require("path");
 
 app.use(cors())
 app.use(express.json())
@@ -12,6 +13,16 @@ app.use(express.static(`${__dirname}/../frontend/`));
 app.use(express.static(`${__dirname}/../../pizzaDatabase/`));
 
 const dataBaseFilePath = `${__dirname}/../../pizzaDatabase/pizzaDatabase.json`
+
+// Order fajlok kiolvasasa mappabol:
+
+const ordersFolder = '../../pizzaDatabase/orders/';
+const incomingOrders =[];
+fs.readdirSync(ordersFolder).forEach(file => {
+    const dataBaseFilePath = path.join(`${__dirname}/../../pizzaDatabase/orders/${file}`)
+    const fileData = fs.readFileSync(dataBaseFilePath)
+    incomingOrders.push(JSON.parse(fileData))
+  });
 
 // ? kiolvassa és visszaadja a database objectet
 const getDatabase = () => {

@@ -23,13 +23,7 @@
 
   <body>
     <h1>Mario</h1>
-    <form
-      ref="uploadForm"
-      id="uploadForm"
-      action="http://localhost:5050/admin"
-      method="post"
-      enctype="multipart/form-data"
-    >
+    <form id="uploadForm">
       <div class="mb-3">
         <label for="pizzaInputName" class="form-label">Name</label>
         <input
@@ -38,6 +32,7 @@
           class="form-control"
           id="pizzaInputName"
           aria-describedby="nameHelp"
+          required
         />
       </div>
       <div class="mb-3">
@@ -50,6 +45,7 @@
           class="form-control"
           id="pizzaInputIngredients"
           aria-describedby="ingredientsHelp"
+          required
         />
       </div>
       <div class="mb-3">
@@ -60,6 +56,7 @@
           class="form-control"
           id="pizzaInputPrice"
           aria-describedby="emailHelp"
+          required
         />
       </div>
       <div class="mb-3">
@@ -70,6 +67,25 @@
           class="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
+          required
+        />
+      </div>
+      <label for="exampleInputEmail1" class="form-label">Status</label>
+      <div class="mb-3">
+        <label for="status">Active</label>
+        <input
+          type="radio"
+          id="statusActiveRadio"
+          name="status"
+          value="Active"
+          checked
+        />
+        <label for="status">Disabled</label>
+        <input
+          type="radio"
+          id="statusDisabledRadio"
+          name="status"
+          value="Disabled"
         />
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
@@ -81,6 +97,7 @@
       <div id="menuHead">
         <div id="menuHeader">
           <div class="pizzaId">ID</div>
+          <div class="pizzaStatus">Status</div>
           <div class="pizzaName">Name</div>
           <div class="pizzaIngredients">Ingredients</div>
           <div class="pizzaPrice">Price (Ft)</div>

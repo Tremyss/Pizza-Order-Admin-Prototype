@@ -22,45 +22,46 @@ let getData = async () => {
   pizzaArray = myData;
 
   for (const pizza of myData) {
-
-    let pizzaDiv = document.createElement("div");
-    pizzaDiv.setAttribute("id", `${pizza.id}-div`);
-    pizzaDiv.setAttribute("class", "pizza-card animate__animated animate__zoomIn");
-    
-
-    let pizzaImg = document.createElement("img");
-    pizzaImg.setAttribute("src", pizza.image);
-    pizzaDiv.appendChild(pizzaImg);
-
-    let pizzaContent = document.createElement("div");
-    pizzaContent.setAttribute("class", "pizza-content");
-    pizzaDiv.appendChild(pizzaContent);
-
-    let pizzaName = document.createElement("h2");
-    pizzaName.innerText = pizza.name;
-    pizzaContent.appendChild(pizzaName);
-
-    let pizzaIngr = document.createElement("p");
-    pizzaIngr.innerText = pizza.ingredients;
-    pizzaContent.appendChild(pizzaIngr);
-
-    let pizzaPrice = document.createElement("h4");
-    pizzaPrice.innerText = `${pizza.price} Ft`;
-    pizzaContent.appendChild(pizzaPrice);
-
-    let pizzaInput = document.createElement("input");
-    pizzaInput.setAttribute("type", "number");
-    pizzaInput.setAttribute("id", `${pizza.id}-input`);
-    pizzaInput.defaultValue = 1;
-    pizzaContent.appendChild(pizzaInput);
-
-    let orderButton = document.createElement("button");
-    orderButton.innerText = "Kosárhoz ad";
-    orderButton.setAttribute("id", `${pizza.id}-btn`);
-    pizzaContent.appendChild(orderButton);
-    orderButton.addEventListener("click", addToChart);
-
-    mainDiv.appendChild(pizzaDiv);
+    if(pizza.status ==="Active"){
+      let pizzaDiv = document.createElement("div");
+      pizzaDiv.setAttribute("id", `${pizza.id}-div`);
+      pizzaDiv.setAttribute("class", "pizza-card animate__animated animate__zoomIn");
+      
+  
+      let pizzaImg = document.createElement("img");
+      pizzaImg.setAttribute("src", pizza.image);
+      pizzaDiv.appendChild(pizzaImg);
+  
+      let pizzaContent = document.createElement("div");
+      pizzaContent.setAttribute("class", "pizza-content");
+      pizzaDiv.appendChild(pizzaContent);
+  
+      let pizzaName = document.createElement("h2");
+      pizzaName.innerText = pizza.name;
+      pizzaContent.appendChild(pizzaName);
+  
+      let pizzaIngr = document.createElement("p");
+      pizzaIngr.innerText = pizza.ingredients;
+      pizzaContent.appendChild(pizzaIngr);
+  
+      let pizzaPrice = document.createElement("h4");
+      pizzaPrice.innerText = `${pizza.price} Ft`;
+      pizzaContent.appendChild(pizzaPrice);
+  
+      let pizzaInput = document.createElement("input");
+      pizzaInput.setAttribute("type", "number");
+      pizzaInput.setAttribute("id", `${pizza.id}-input`);
+      pizzaInput.defaultValue = 1;
+      pizzaContent.appendChild(pizzaInput);
+  
+      let orderButton = document.createElement("button");
+      orderButton.innerText = "Kosárhoz ad";
+      orderButton.setAttribute("id", `${pizza.id}-btn`);
+      pizzaContent.appendChild(orderButton);
+      orderButton.addEventListener("click", addToChart);
+  
+      mainDiv.appendChild(pizzaDiv);
+    }
   }
 };
 getData();
@@ -154,6 +155,7 @@ document.getElementById("order-div").onsubmit = function (event) {
   }
   const actualAllData = { ...actualCustomer, ...actualOrder }
   sendOrderData(actualAllData)
+
 }
 
 // Függvény, ami a rendelés összes adatát POST requesttel elküldi a szervernek
@@ -171,6 +173,12 @@ const sendOrderData = async (obj) => {
   userInstructions.innerText = (response.status === 200) ? `Köszönjük a rendelést, kedves ${obj.name}!` : response.status
   userInstructions.setAttribute("class","order-confirm")
   actualOrder = []
+  const inputs = document.querySelectorAll("#form input" );
+
+  inputs.forEach(input => {
+    input.value = '';
+  });
+
 }
 
 var myCarousel = document.querySelector('#myCarousel')

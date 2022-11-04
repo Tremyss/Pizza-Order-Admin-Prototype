@@ -1,0 +1,25 @@
+{
+  "0": {
+    "id": 3,
+    "name": "Chicken carbonara pizza",
+    "ingredients": "besamel, fokhagyma, sonka, bacon, lilahagyma, roston csirke, parmezán, mozzarella, újhagyma",
+    "image": "../images/pizza3.jpg",
+    "amount": 3,
+    "price": 3890,
+    "status": "Active"
+  },
+  "1": {
+    "id": 4,
+    "name": "Aphrodité pizza",
+    "ingredients": "tejföl, roston csirke, koktélparadicsom, feta sajt, olívabogyó, bazsalikom, mozzarella",
+    "image": "../images/pizza4.jpg",
+    "amount": 3,
+    "price": 3090,
+    "status": "Active"
+  },
+  "name": "Tildy Balázs",
+  "zipCode": "1146",
+  "city": "Budapest",
+  "street": "Thököly ÚT",
+  "houseNumber": "85"
+}

@@ -1,5 +1,6 @@
 console.log("script.js is loaded");
 
+let uploadForm = document.getElementById("uploadForm")
 let modalInputId = document.getElementById("modalInputId")
 let modalInputName = document.getElementById("modalInputName")
 let modalInputIngredientes = document.getElementById("modalInputIngredients")
@@ -42,6 +43,11 @@ const generateMenu = (datas) => {
     pizzaIdDiv.innerText = data.id;
     menuRowDiv.appendChild(pizzaIdDiv);
 
+    let pizzaStatusDiv = document.createElement("div");
+    pizzaStatusDiv.setAttribute("class", "pizzaStatus");
+    pizzaStatusDiv.innerText = data.status;
+    menuRowDiv.appendChild(pizzaStatusDiv);
+
     let pizzaNameDiv = document.createElement("div");
     pizzaNameDiv.setAttribute("class", "pizzaName");
     pizzaNameDiv.innerText = data.name;
@@ -76,6 +82,18 @@ const generateMenu = (datas) => {
   });
 };
 
+// Uj pizza feltoltés serverre funkcio
+const uploadData = async (event) =>{
+    event.preventDefault()
+    const formData = new FormData(uploadForm)
+
+    await fetch ("http://127.0.0.1:5050/admin",{
+        method:"POST",
+        body: formData
+    })
+    getData()
+}
+
 // editPizza eventlisterner function
 
 // deletePizza eventlisterner function
@@ -105,13 +123,16 @@ const editPizza = (data) => async (event) => {
     modalInputIngredientes.value = data.ingredients
     modalInputPrice.value= data.price
 
+
 };
 
 
 const modifyData = async (event) => {
 
-    event.preventDefault()
+    //event.preventDefault()
     const formData = new FormData(modalForm)
+    console.log(modalForm)
+    formData.append("image",`../images/pizza${modalInputId.innerText}.jpg`)
     /* let idNumber = modalInputId.innerText
     console.log(typeof idNumber)
     let numberifiedIdNumber = parseInt(idNumber)
@@ -129,4 +150,5 @@ const modifyData = async (event) => {
     console.log([...formData]);
   };
 
+  uploadForm.addEventListener("submit",uploadData)
   modalForm.addEventListener("submit", modifyData)
