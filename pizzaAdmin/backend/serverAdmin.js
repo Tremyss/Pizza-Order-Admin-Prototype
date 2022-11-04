@@ -14,7 +14,10 @@ app.use(express.static(`${__dirname}/../../pizzaDatabase/`));
 
 const dataBaseFilePath = `${__dirname}/../../pizzaDatabase/pizzaDatabase.json`
 
-// Order fajlok kiolvasasa mappabol:
+
+app.get("/order", (req,res)=>{
+
+    // Order fajlok kiolvasasa mappabol:
 
 const ordersFolder = '../../pizzaDatabase/orders/';
 const incomingOrders =[];
@@ -23,6 +26,11 @@ fs.readdirSync(ordersFolder).forEach(file => {
     const fileData = fs.readFileSync(dataBaseFilePath)
     incomingOrders.push(JSON.parse(fileData))
   });
+
+  res.json(incomingOrders)
+
+})
+
 
 // ? kiolvassa és visszaadja a database objectet
 const getDatabase = () => {
