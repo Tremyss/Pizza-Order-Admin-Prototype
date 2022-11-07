@@ -16,7 +16,11 @@
 </head>
 
 <body>
-  <h1>Mario</h1>
+
+  <div id="title">
+    <h1>Mario's Admin</h1>
+  </div>
+
 
   <div id="incomingOrders">
 
@@ -52,64 +56,74 @@
   </div>
 
 
+  <div id="upload-menu">
 
 
-  <form id="uploadForm">
-    <div class="mb-3">
-      <label for="pizzaInputName" class="form-label">Name</label>
-      <input name="name" type="text" class="form-control" id="pizzaInputName" aria-describedby="nameHelp" required />
-    </div>
-    <div class="mb-3">
-      <label for="pizzaInputIngredients" class="form-label">Ingredients</label>
-      <input name="ingredients" type="text" class="form-control" id="pizzaInputIngredients"
-        aria-describedby="ingredientsHelp" required />
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Price</label>
-      <input name="price" type="number" class="form-control" id="pizzaInputPrice" aria-describedby="emailHelp"
-        required />
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Upload File</label>
-      <input name="image" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-        required />
-    </div>
-    <label for="exampleInputEmail1" class="form-label">Status</label>
-    <div class="mb-3">
-      <label for="status">Active</label>
-      <input type="radio" id="statusActiveRadio" name="status" value="Active" checked />
-      <label for="status">Disabled</label>
-      <input type="radio" id="statusDisabledRadio" name="status" value="Disabled" />
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+    <form id="uploadForm">
+      <h2>Termék hozzáadása</h2>
+      <div class="mb-3">
+        <label for="pizzaInputName" class="form-label">Name</label>
+        <input name="name" type="text" class="form-control" id="pizzaInputName" aria-describedby="nameHelp" required />
+      </div>
+      <div class="mb-3">
+        <label for="pizzaInputIngredients" class="form-label">Ingredients</label>
+        <input name="ingredients" type="text" class="form-control" id="pizzaInputIngredients"
+          aria-describedby="ingredientsHelp" required />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Price</label>
+        <input name="price" type="number" class="form-control" id="pizzaInputPrice" aria-describedby="emailHelp"
+          required />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Upload File</label>
+        <input name="image" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          required />
+      </div>
+      <label for="exampleInputEmail1" class="form-label">Status</label>
+      <div class="mb-3">
+        <label for="status">Active</label>
+        <input type="radio" id="statusActiveRadio" name="status" value="Active" checked />
+        <label for="status">Disabled</label>
+        <input type="radio" id="statusDisabledRadio" name="status" value="Disabled" />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
-  <h2>Mario's pizzas</h2>
 
-  <div id="menu">
-    <div id="menuHead">
-      <div id="menuHeader">
-        <div class="pizzaId">ID</div>
-        <div class="pizzaStatus">Status</div>
-        <div class="pizzaName">Name</div>
-        <div class="pizzaIngredients">Ingredients</div>
-        <div class="pizzaPrice">Price (Ft)</div>
+
+    <div id="menu">
+      <h2>Jelenlegi Kínálat</h2>
+      <div id="menuHead">
+        <div id="menuHeader">
+          <div class="pizzaImage"></div>
+          <div class="pizzaId">ID</div>
+          <div class="pizzaStatus">Status</div>
+          <div class="pizzaName">Name</div>
+          <div class="pizzaIngredients">Ingredients</div>
+          <div class="pizzaPrice">Price (Ft)</div>
+          <div class="buttonDiv"></div>
+
+        </div>
+      </div>
+
+      <div id="menuBody">
+        //rendered pizza list here
+        <div class="menuRow">
+          <div class="pizzaId"></div>
+          <img class="pizzaImage" src="" alt="" />
+          <div class="pizzaName"></div>
+          <div class="pizzaIngredients"></div>
+          <div class="pizzaPrice"></div>
+          <button class="editButton">edit</button>
+          <button class="deleteButton">delete</button>
+        </div>
       </div>
     </div>
 
-    <div id="menuBody">
-      //rendered pizza list here
-      <div class="menuRow">
-        <div class="pizzaId"></div>
-        <img class="pizzaImage" src="" alt="" />
-        <div class="pizzaName"></div>
-        <div class="pizzaIngredients"></div>
-        <div class="pizzaPrice"></div>
-        <button class="editButton">edit</button>
-        <button class="deleteButton">delete</button>
-      </div>
-    </div>
+
   </div>
+
 
   <!-- Button trigger modal -->
   <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -136,10 +150,17 @@
             <input name="price" type="number" class="form-control" id="modalInputPrice" aria-describedby="emailHelp"
               required />
             <input name="image" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-            <label for="status">Active</label>
-            <input type="radio" id="statusActiveRadio" name="status" value="Active" checked />
-            <label for="status">Disabled</label>
-            <input type="radio" id="statusDisabledRadio" name="status" value="Disabled" />
+
+            <div id="active-disabled">
+
+              <label for="status">Active</label>
+              <input type="radio" id="statusActiveRadio" name="status" value="Active" checked />
+              <label for="status">Disabled</label>
+              <input type="radio" id="statusDisabledRadio" name="status" value="Disabled" />
+
+
+            </div>
+
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

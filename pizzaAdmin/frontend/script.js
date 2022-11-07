@@ -63,7 +63,7 @@ const generateOrders = (datas) => {
           if (subData === "amount") {
             let amount = document.createElement("div")
             amount.setAttribute("class","amount")
-            amount.innerText = datas[i][data][subData]
+            amount.innerText = datas[i][data][subData] + "db"
             indiPizza.appendChild(amount)
           }
           if (subData === "name") {
@@ -72,12 +72,12 @@ const generateOrders = (datas) => {
             name.innerText = datas[i][data][subData]
             indiPizza.appendChild(name)
           }
-          if (subData === "ingredients") {
-            let ingredients = document.createElement("div")
-            ingredients.setAttribute("class","ingredients")
-            ingredients.innerText = datas[i][data][subData]
-            indiPizza.appendChild(ingredients)
-          }
+          // if (subData === "ingredients") {
+          //   let ingredients = document.createElement("div")
+          //   ingredients.setAttribute("class","ingredients")
+          //   ingredients.innerText = datas[i][data][subData]
+          //   indiPizza.appendChild(ingredients)
+          // }
   
         }
         pizzaProperty.appendChild(indiPizza)
@@ -95,7 +95,7 @@ const generateOrders = (datas) => {
     price.setAttribute("class","priceProperty")
     let sumPrice = document.createElement("div")
     sumPrice.setAttribute("class","sum-price")
-    sumPrice.innerText= datas[i].sumPrice
+    sumPrice.innerText= "Végösszeg: "+datas[i].sumPrice +" Ft"
     price.appendChild(sumPrice)
     order.appendChild(price)
 
@@ -242,7 +242,7 @@ const editPizza = (data) => async (event) => {
 };
 
 const modifyData = async (event) => {
-  //event.preventDefault()
+  // event.preventDefault()
   const formData = new FormData(modalForm);
   console.log(modalForm);
   formData.append("image", `../images/pizza${modalInputId.innerText}.jpg`);
