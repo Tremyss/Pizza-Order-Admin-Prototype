@@ -1,14 +1,12 @@
 console.log("script.js is loaded");
 
-let uploadForm = document.getElementById("uploadForm")
-let modalInputId = document.getElementById("modalInputId")
-let modalInputName = document.getElementById("modalInputName")
-let modalInputIngredientes = document.getElementById("modalInputIngredients")
-let modalInputPrice = document.getElementById("modalInputPrice")
-let modalSaveBtn = document.getElementById("modal-save")
-let modalForm = document.getElementById("modal-form")
-
-
+let uploadForm = document.getElementById("uploadForm");
+let modalInputId = document.getElementById("modalInputId");
+let modalInputName = document.getElementById("modalInputName");
+let modalInputIngredientes = document.getElementById("modalInputIngredients");
+let modalInputPrice = document.getElementById("modalInputPrice");
+let modalSaveBtn = document.getElementById("modal-save");
+let modalForm = document.getElementById("modal-form");
 
 //GET data
 const getPizzaData = async () => {
@@ -25,8 +23,7 @@ const getPizzaData = async () => {
 
 getPizzaData();
 
-const getOrdersData = async  () => {
-
+const getOrdersData = async () => {
   const url = "http://127.0.0.1:5050/order";
   const orderDataJson = await fetch(url, {
     method: "GET",
@@ -35,17 +32,17 @@ const getOrdersData = async  () => {
     },
   });
   const orderDataObj = await orderDataJson.json();
-  
+
   generateOrders(orderDataObj);
-
-
-}
+  // console.log(orderDataObj);
+  /* // ? megrendelő neve:
+  console.log(orderDataObj[0].name);
+  // ? pizza neve:
+  console.log(orderDataObj[1][0].name); */
+};
 getOrdersData();
 
-
-
 const generateOrders = (datas) => {
-
   // orderDataObject = [
   //   { // order 1
   //     {  //pizza 1
@@ -100,81 +97,99 @@ const generateOrders = (datas) => {
 
   //   ]
 
+  let orderContainer = document.getElementById("orderContainer");
+  orderContainer.innerHTML = "";
 
-  let orderContainer= document.getElementById("orderContainer")
-  orderContainer.innerHTML ="";
+  for (let i = 0; i < datas.length; i++) {
+    for (const data in datas[i]) {
+      if (typeof datas[i][data] === "object") {
+        for (const subData in datas[i][data]) {
+          if (subData === "name") {
+            console.log(datas[i][data][subData]);
+          }
+          if (subData === "ingredients") {
+            console.log(datas[i][data][subData]);
+          }
+        }
+      }
+    }
+  }
 
-  datas.map((data) => {
+  /* datas.map((data) => {
+    let orderDiv = document.createElement("div");
+    orderDiv.setAttribute("class", "order");
 
-  let orderDiv = document.createElement("div")
-  orderDiv.setAttribute("class", "order")
+    //ebből pizzánként renderelni többet
+    let pizzaPropertyDiv = document.createElement("div");
+    pizzaPropertyDiv.setAttribute("class", "orderProperty");
 
-  //ebből pizzánként renderelni többet
-  let pizzaPropertyDiv= document.createElement("div")
-  pizzaPropertyDiv.setAttribute("class","orderProperty")
+    // * ide kell majd még egy map!
+    if (typeof data === "object") {
+      console.log(data.name);
+      
+      
+    }
+    let orderAmountDiv = document.createElement("div");
+    orderAmountDiv.setAttribute("class", "orderAmount");
 
-  // ide kell majd még egy map!
-  let orderAmountDiv  = document.createElement("div")
-  orderAmountDiv.setAttribute("class", "orderAmount")
+    let orderNameDiv = document.createElement("div");
+    orderNameDiv.setAttribute("class", "orderName");
 
-  let orderNameDiv = document.createElement("div")
-  orderNameDiv.setAttribute("class", "orderName")
+    let orderIngredientsDiv = document.createElement("div");
+    orderIngredientsDiv.setAttribute("class", "orderIngredients");
+    // map
 
-  let orderIngredientsDiv = document.createElement("div")
-  orderIngredientsDiv.setAttribute("class", "orderIngredients")
-  // map 
+    pizzaPropertyDiv.appendChild(orderAmountDiv);
+    pizzaPropertyDiv.appendChild(orderNameDiv);
+    pizzaPropertyDiv.appendChild(orderIngredientsDiv);
 
-  pizzaPropertyDiv.appendChild(orderAmountDiv)
-  pizzaPropertyDiv.appendChild(orderNameDiv)
-  pizzaPropertyDiv.appendChild(orderIngredientsDiv)
+    orderDiv.appendChild(pizzaPropertyDiv);
 
-  orderDiv.appendChild(pizzaPropertyDiv)
+    let customerPropertyDiv = document.createElement("div");
+    customerPropertyDiv.setAttribute("class", "customerProperty");
 
-  let customerPropertyDiv= document.createElement("div")
-  customerPropertyDiv.setAttribute("class","customerProperty")
+    let customerNameDiv = document.createElement("div");
+    customerNameDiv.setAttribute("class", "customerName");
+    customerNameDiv.innerText = data.name;
 
-  let customerNameDiv= document.createElement("div")
-  customerNameDiv.setAttribute("class","customerName")
+    let customerZipCodeDiv = document.createElement("div");
+    customerZipCodeDiv.setAttribute("class", "customerZipCode");
+    // * customerNameDiv.innerText = data.name;
 
-  let customerZipCodeDiv= document.createElement("div")
-  customerZipCodeDiv.setAttribute("class","customerZipCode")
+    let customerCityDiv = document.createElement("div");
+    customerCityDiv.setAttribute("class", "customerCity");
 
-  let customerCityDiv= document.createElement("div")
-  customerCityDiv.setAttribute("class","customerCity")
+    let customerStreetDiv = document.createElement("div");
+    customerStreetDiv.setAttribute("class", "customerStreet");
 
-  let customerStreetDiv= document.createElement("div")
-  customerStreetDiv.setAttribute("class","customerStreet")
+    let customerHouseNumberDiv = document.createElement("div");
+    customerHouseNumberDiv.setAttribute("class", "customerHouseNumber");
 
-  let customerHouseNumberDiv= document.createElement("div")
-  customerHouseNumberDiv.setAttribute("class","customerHouseNumber")
+    customerPropertyDiv.appendChild(customerNameDiv);
+    customerPropertyDiv.appendChild(customerZipCodeDiv);
+    customerPropertyDiv.appendChild(customerCityDiv);
+    customerPropertyDiv.appendChild(customerStreetDiv);
+    customerPropertyDiv.appendChild(customerHouseNumberDiv);
 
-  customerPropertyDiv.appendChild(customerNameDiv)
-  customerPropertyDiv.appendChild(customerZipCodeDiv)
-  customerPropertyDiv.appendChild(customerCityDiv)
-  customerPropertyDiv.appendChild(customerStreetDiv)
-  customerPropertyDiv.appendChild(customerHouseNumberDiv)
- 
-  orderDiv.appendChild(customerPropertyDiv)
+    orderDiv.appendChild(customerPropertyDiv);
 
-  let customerPayDiv = document.createElement("div")
-  customerPayDiv.setAttribute("class", "customerPay")
+    let customerPayDiv = document.createElement("div");
+    customerPayDiv.setAttribute("class", "customerPay");
 
-  let customerSumPrice = document.createElement("div")
-  customerSumPrice.setAttribute("class", "customerSumPrice")
+    let customerSumPrice = document.createElement("div");
+    customerSumPrice.setAttribute("class", "customerSumPrice");
 
-  let customerOrderPhaseDiv = document.createElement("div")
-  customerOrderPhaseDiv.setAttribute("class", "customerOrderPhase")
+    let customerOrderPhaseDiv = document.createElement("div");
+    customerOrderPhaseDiv.setAttribute("class", "customerOrderPhase");
 
-  customerPayDiv.appendChild(customerSumPrice)
-  customerPayDiv.appendChild(customerOrderPhaseDiv)
-  
-  orderDiv.appendChild(customerPayDiv)
+    customerPayDiv.appendChild(customerSumPrice);
+    customerPayDiv.appendChild(customerOrderPhaseDiv);
 
-  orderContainer.appendChild(orderDiv)
+    orderDiv.appendChild(customerPayDiv);
 
-  })
-
-}
+    orderContainer.appendChild(orderDiv);
+  }); */
+};
 
 // Generate Menu-list section
 const generateMenu = (datas) => {
@@ -234,20 +249,17 @@ const generateMenu = (datas) => {
   });
 };
 
-
-
-
 // Uj pizza feltoltés serverre funkcio
-const uploadData = async (event) =>{
-    event.preventDefault()
-    const formData = new FormData(uploadForm)
+const uploadData = async (event) => {
+  event.preventDefault();
+  const formData = new FormData(uploadForm);
 
-    await fetch ("http://127.0.0.1:5050/admin",{
-        method:"POST",
-        body: formData
-    })
-    getPizzaData()
-}
+  await fetch("http://127.0.0.1:5050/admin", {
+    method: "POST",
+    body: formData,
+  });
+  getPizzaData();
+};
 
 // editPizza eventlisterner function
 
@@ -267,43 +279,38 @@ const deletePizza = (data) => async (event) => {
       },
       body: JSON.stringify(deletedData),
     });
-  }  
+  }
   getPizzaData();
 };
 
 const editPizza = (data) => async (event) => {
-    
-    modalInputId.innerText = data.id
-    modalInputName.value = data.name
-    modalInputIngredientes.value = data.ingredients
-    modalInputPrice.value= data.price
-
-
+  modalInputId.innerText = data.id;
+  modalInputName.value = data.name;
+  modalInputIngredientes.value = data.ingredients;
+  modalInputPrice.value = data.price;
 };
 
-
 const modifyData = async (event) => {
-
-    //event.preventDefault()
-    const formData = new FormData(modalForm)
-    console.log(modalForm)
-    formData.append("image",`../images/pizza${modalInputId.innerText}.jpg`)
-    /* let idNumber = modalInputId.innerText
+  //event.preventDefault()
+  const formData = new FormData(modalForm);
+  console.log(modalForm);
+  formData.append("image", `../images/pizza${modalInputId.innerText}.jpg`);
+  /* let idNumber = modalInputId.innerText
     console.log(typeof idNumber)
     let numberifiedIdNumber = parseInt(idNumber)
     console.log(typeof numberifiedIdNumber)
     formData.append("id", numberifiedIdNumber) */
-    formData.append("id", modalInputId.innerText)
-    
-    const url = "http://127.0.0.1:5050/admin";
-    const response = await fetch(url, {
-      method: "PUT",
-      body: formData
-    });
+  formData.append("id", modalInputId.innerText);
 
-    getPizzaData();
-    console.log([...formData]);
-  };
+  const url = "http://127.0.0.1:5050/admin";
+  const response = await fetch(url, {
+    method: "PUT",
+    body: formData,
+  });
 
-  uploadForm.addEventListener("submit",uploadData)
-  modalForm.addEventListener("submit", modifyData)
+  getPizzaData();
+  console.log([...formData]);
+};
+
+uploadForm.addEventListener("submit", uploadData);
+modalForm.addEventListener("submit", modifyData);
