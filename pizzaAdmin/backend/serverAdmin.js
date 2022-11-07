@@ -31,6 +31,26 @@ fs.readdirSync(ordersFolder).forEach(file => {
 
 })
 
+app.post("/order",(req,res)=>{
+    const dataObj = req.body 
+    console.log(dataObj.progressValue)
+    const orderFilePath = path.join(`${__dirname}/../../pizzaDatabase/orders/${req.body.id}.json`)   
+    const orderFileJson = fs.readFileSync(orderFilePath)
+    const orderFileObject = JSON.parse(orderFileJson)
+    orderFileObject.progress = dataObj.progressValue
+
+
+    res.sendStatus(200)
+
+    const dataString = JSON.stringify(orderFileObject)
+    fs.writeFileSync(orderFilePath, dataString, (err) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).send(err)
+        }
+    })
+})
+
 
 // ? kiolvassa és visszaadja a database objectet
 const getDatabase = () => {

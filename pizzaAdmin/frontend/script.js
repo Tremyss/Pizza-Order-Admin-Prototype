@@ -43,154 +43,105 @@ const getOrdersData = async () => {
 getOrdersData();
 
 const generateOrders = (datas) => {
-  // orderDataObject = [
-  //   { // order 1
-  //     {  //pizza 1
-  //       name: "name",
-  //       id: "id",
-  //       image: "image",
-  //       ingredients: "ingredients",
-  //       name: "name",
-  //       price: 3000,
-  //       status: "status"
-  //     },
-  //     { //pizza 2
-  //       name: "name",
-  //       id: "id",
-  //       image: "image",
-  //       ingredients: "ingredients",
-  //       name: "name",
-  //       price: 3000,
-  //       status: "status"
-  //     },
-  //     city: "city",
-  //     houseNumber: "house Number",
-  //     name: "customer's name",
-  //     street: "street name",
-  //     zipCode: 7632
-  //   },
-  //     { // order 2
-  //       {  //pizza 1
-  //         name: "name",
-  //         id: "id",
-  //         image: "image",
-  //         ingredients: "ingredients",
-  //         name: "name",
-  //         price: 3000,
-  //         status: "status"
-  //       },
-  //       { //pizza 2
-  //         name: "name",
-  //         id: "id",
-  //         image: "image",
-  //         ingredients: "ingredients",
-  //         name: "name",
-  //         price: 3000,
-  //         status: "status"
-  //       },
-  //       city: "city",
-  //       houseNumber: "house Number",
-  //       name: "customer's name",
-  //       street: "street name",
-  //       zipCode: 7632
-  //     }
-
-  //   ]
 
   let orderContainer = document.getElementById("orderContainer");
   orderContainer.innerHTML = "";
 
+  //ebből pizzánként renderelni többet
+
   for (let i = 0; i < datas.length; i++) {
+   let order =  document.createElement("div")
+   order.setAttribute("class","order")
+   let pizzaProperty =  document.createElement("div")
+   pizzaProperty.setAttribute("class","pizzaProperty")
+    let sum =0;
     for (const data in datas[i]) {
       if (typeof datas[i][data] === "object") {
+        let indiPizza =  document.createElement("div")
+        indiPizza.setAttribute("class","indiPizza")
         for (const subData in datas[i][data]) {
+          if (subData === "amount") {
+            let amount = document.createElement("div")
+            amount.setAttribute("class","amount")
+            amount.innerText = datas[i][data][subData]
+            indiPizza.appendChild(amount)
+          }
           if (subData === "name") {
-            console.log(datas[i][data][subData]);
+            let name = document.createElement("div")
+            name.setAttribute("class","name")
+            name.innerText = datas[i][data][subData]
+            indiPizza.appendChild(name)
           }
           if (subData === "ingredients") {
-            console.log(datas[i][data][subData]);
+            let ingredients = document.createElement("div")
+            ingredients.setAttribute("class","ingredients")
+            ingredients.innerText = datas[i][data][subData]
+            indiPizza.appendChild(ingredients)
           }
+  
         }
+        pizzaProperty.appendChild(indiPizza)
+        order.appendChild(pizzaProperty)
       }
     }
+    orderContainer.appendChild(order)
+    let customerProperty = document.createElement("div")
+    customerProperty.setAttribute("class","customerProperty")
+    let customer = document.createElement("div")
+    customer.innerText=""+datas[i].name+" "+datas[i].city+" "+datas[i].houseNumber+" "+datas[i].street+" "+datas[i].zipCode+" "
+    customerProperty.appendChild(customer)
+    order.appendChild(customerProperty)
+    let price = document.createElement("div")
+    price.setAttribute("class","priceProperty")
+    let sumPrice = document.createElement("div")
+    sumPrice.setAttribute("class","sum-price")
+    sumPrice.innerText= datas[i].sumPrice
+    price.appendChild(sumPrice)
+    order.appendChild(price)
+
+    let currentStatus = document.createElement("div")
+    currentStatus.setAttribute("class","currentStatus")
+    currentStatus.innerText ="Progress: "+datas[i].progress
+    order.appendChild(currentStatus)
+
+    let progressSelect = document.createElement("select")
+    progressSelect.setAttribute("class","progressSelect")
+    progressSelect.setAttribute("value","proba")
+
+    progressSelect.addEventListener("change",updateProgress(datas[i]))
+    let progressOption0 = document.createElement("option")
+    progressOption0.setAttribute("value","Módosítás")
+    progressOption0.innerText= "Módosítás"
+    let progressOption1 =  document.createElement("option")
+    progressOption1.setAttribute("value","Open")
+    progressOption1.innerText= "Open"
+    let progressOption2 =  document.createElement("option")
+    progressOption2.setAttribute("value","Closed")
+    progressOption2.innerText="Closed"
+    progressSelect.appendChild(progressOption0)
+    progressSelect.appendChild(progressOption1)
+    progressSelect.appendChild(progressOption2)
+    order.appendChild(progressSelect)
   }
-
-  /* datas.map((data) => {
-    let orderDiv = document.createElement("div");
-    orderDiv.setAttribute("class", "order");
-
-    //ebből pizzánként renderelni többet
-    let pizzaPropertyDiv = document.createElement("div");
-    pizzaPropertyDiv.setAttribute("class", "orderProperty");
-
-    // * ide kell majd még egy map!
-    if (typeof data === "object") {
-      console.log(data.name);
-      
-      
-    }
-    let orderAmountDiv = document.createElement("div");
-    orderAmountDiv.setAttribute("class", "orderAmount");
-
-    let orderNameDiv = document.createElement("div");
-    orderNameDiv.setAttribute("class", "orderName");
-
-    let orderIngredientsDiv = document.createElement("div");
-    orderIngredientsDiv.setAttribute("class", "orderIngredients");
-    // map
-
-    pizzaPropertyDiv.appendChild(orderAmountDiv);
-    pizzaPropertyDiv.appendChild(orderNameDiv);
-    pizzaPropertyDiv.appendChild(orderIngredientsDiv);
-
-    orderDiv.appendChild(pizzaPropertyDiv);
-
-    let customerPropertyDiv = document.createElement("div");
-    customerPropertyDiv.setAttribute("class", "customerProperty");
-
-    let customerNameDiv = document.createElement("div");
-    customerNameDiv.setAttribute("class", "customerName");
-    customerNameDiv.innerText = data.name;
-
-    let customerZipCodeDiv = document.createElement("div");
-    customerZipCodeDiv.setAttribute("class", "customerZipCode");
-    // * customerNameDiv.innerText = data.name;
-
-    let customerCityDiv = document.createElement("div");
-    customerCityDiv.setAttribute("class", "customerCity");
-
-    let customerStreetDiv = document.createElement("div");
-    customerStreetDiv.setAttribute("class", "customerStreet");
-
-    let customerHouseNumberDiv = document.createElement("div");
-    customerHouseNumberDiv.setAttribute("class", "customerHouseNumber");
-
-    customerPropertyDiv.appendChild(customerNameDiv);
-    customerPropertyDiv.appendChild(customerZipCodeDiv);
-    customerPropertyDiv.appendChild(customerCityDiv);
-    customerPropertyDiv.appendChild(customerStreetDiv);
-    customerPropertyDiv.appendChild(customerHouseNumberDiv);
-
-    orderDiv.appendChild(customerPropertyDiv);
-
-    let customerPayDiv = document.createElement("div");
-    customerPayDiv.setAttribute("class", "customerPay");
-
-    let customerSumPrice = document.createElement("div");
-    customerSumPrice.setAttribute("class", "customerSumPrice");
-
-    let customerOrderPhaseDiv = document.createElement("div");
-    customerOrderPhaseDiv.setAttribute("class", "customerOrderPhase");
-
-    customerPayDiv.appendChild(customerSumPrice);
-    customerPayDiv.appendChild(customerOrderPhaseDiv);
-
-    orderDiv.appendChild(customerPayDiv);
-
-    orderContainer.appendChild(orderDiv);
-  }); */
 };
 
+const updateProgress = (data) => async(event) =>{
+  console.log("lefut a change event")
+    const idSearch = data.id;
+    const progressValue = event.target.value;
+    const dataObject ={
+      id: idSearch,
+      progressValue:progressValue
+    }
+    await fetch("http://127.0.0.1:5050/order",{
+      method:"POST",
+      headers:{  
+        "Content-Type": "application/json"
+         },
+      body:JSON.stringify(dataObject)
+    })
+    getOrdersData();
+}
 // Generate Menu-list section
 const generateMenu = (datas) => {
   let menuBody = document.getElementById("menuBody");

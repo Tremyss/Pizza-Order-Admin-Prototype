@@ -13,6 +13,7 @@ let pizzaObj;
 let pizzaArray;
 let inputValue;
 let pizzaTitle;
+let sumPrice =0;
 
 
 
@@ -68,7 +69,7 @@ getData();
 
 
 const generateBasket = () => {
-  let sumPrice = 0
+
   basketListDiv.innerHTML = ""
   for (const elem of actualOrder) {
     let basketLineDiv = document.createElement("div")
@@ -151,7 +152,9 @@ document.getElementById("order-div").onsubmit = function (event) {
     zipCode: event.target.zipCode.value,
     city: event.target.city.value,
     street: event.target.street.value,
-    houseNumber: event.target.houseNumber.value
+    houseNumber: event.target.houseNumber.value,
+    progress: "Open",
+    sumPrice: sumPrice,
   }
   const actualAllData = { ...actualCustomer, ...actualOrder }
   sendOrderData(actualAllData)
