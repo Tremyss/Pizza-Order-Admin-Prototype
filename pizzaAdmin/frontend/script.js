@@ -7,6 +7,7 @@ let modalInputIngredientes = document.getElementById("modalInputIngredients");
 let modalInputPrice = document.getElementById("modalInputPrice");
 let modalSaveBtn = document.getElementById("modal-save");
 let modalForm = document.getElementById("modal-form");
+let statusData = document.getElementById("order-status")
 
 //GET data
 const getPizzaData = async () => {
@@ -124,6 +125,24 @@ const generateOrders = (datas) => {
     order.appendChild(progressSelect)
   }
 };
+// Filterunk szerinti adatkeres az Ordereskrol.
+/* const statusFilter = async(event) =>{
+  const data = event.target.value;
+  const dataObject = {
+    progress: data
+  }
+  console.log(dataObject)
+  const response = await fetch("http://127.0.0.1:5050/proba",{
+    method:"POST",
+    headers:{  
+      "Content-Type": "application/json"
+       },
+      body:JSON.stringify(dataObject)
+  })
+
+  
+} */
+//statusData.addEventListener("change",statusFilter)
 
 const updateProgress = (data) => async(event) =>{
   console.log("lefut a change event")

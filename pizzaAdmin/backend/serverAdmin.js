@@ -51,6 +51,27 @@ app.post("/order",(req,res)=>{
     })
 })
 
+/* app.post("/proba",(req,res)=>{
+    const dataObj = req.body;
+    console.log(dataObj.progress)
+    const ordersFolder = '../../pizzaDatabase/orders/';
+    const incomingOrders =[];
+
+    fs.readdirSync(ordersFolder).forEach(file => {
+    const dataBaseFilePath = path.join(`${__dirname}/../../pizzaDatabase/orders/${file}`)
+    const fileData = fs.readFileSync(dataBaseFilePath)
+    incomingOrders.push(JSON.parse(fileData))
+  });
+  console.log(incomingOrders)
+    for(const data of incomingOrders){
+        if(data.progress == dataObj.progress){
+            console.log("talaltam egyet")
+        }
+    }
+
+  res.sendStatus(200)
+}) */
+
 
 // ? kiolvassa és visszaadja a database objectet
 const getDatabase = () => {
